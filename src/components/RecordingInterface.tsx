@@ -1,9 +1,9 @@
-
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mic, Square, Play, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
+import BeatGenerator from "./BeatGenerator";
 
 interface RecordingInterfaceProps {
   onRecordingComplete: (audioBlob: Blob) => void;
@@ -14,6 +14,7 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
   const [isRecording, setIsRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
   const [recordingTime, setRecordingTime] = useState(0);
+  const [currentBeat, setCurrentBeat] = useState(0);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -86,6 +87,10 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const handleBeatChange = (beatIndex: number) => {
+    setCurrentBeat(beatIndex);
+  };
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <Button 
@@ -106,6 +111,12 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
+          {/* Beat Generator */}
+          <BeatGenerator 
+            isPlaying={isRecording} 
+            onBeatChange={handleBeatChange}
+          />
+
           <div className="flex justify-center">
             {!isRecording && !audioBlob && (
               <Button 
@@ -165,6 +176,7 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
             <p>🔥 <strong>Battle Tips:</strong></p>
             <p>• Keep it between 30-60 seconds</p>
             <p>• Focus on flow, wordplay, and creativity</p>
+            <p>• The beat will guide your rhythm - stay on tempo!</p>
             <p>• Bring the heat and show no mercy!</p>
           </div>
         </CardContent>
