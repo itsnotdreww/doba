@@ -19,11 +19,11 @@ const Results = ({ results, onPlayAgain }: ResultsProps) => {
   };
 
   const getPerformanceLevel = (score: number) => {
-    if (score >= 9) return { level: "Legendary", emoji: "🔥" };
-    if (score >= 8) return { level: "Excellent", emoji: "🎯" };
-    if (score >= 7) return { level: "Great", emoji: "👌" };
-    if (score >= 6) return { level: "Good", emoji: "👍" };
-    return { level: "Keep Grinding", emoji: "💪" };
+    if (score >= 9) return { level: "Battle Champion", emoji: "👑" };
+    if (score >= 8) return { level: "Rap Warrior", emoji: "🔥" };
+    if (score >= 7) return { level: "Strong Contender", emoji: "💪" };
+    if (score >= 6) return { level: "Rising Star", emoji: "⭐" };
+    return { level: "Keep Training", emoji: "🎯" };
   };
 
   const performance = getPerformanceLevel(results.overallScore);
@@ -31,13 +31,13 @@ const Results = ({ results, onPlayAgain }: ResultsProps) => {
   const shareResults = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'FreestyleAI Results',
-        text: `I just scored ${results.overallScore}/10 on FreestyleAI! ${performance.emoji}`,
+        title: 'DOBA Battle Results',
+        text: `I just scored ${results.overallScore}/10 in DOBA! ${performance.emoji}`,
         url: window.location.href
       });
     } else {
-      navigator.clipboard.writeText(`I just scored ${results.overallScore}/10 on FreestyleAI! ${performance.emoji}`);
-      toast.success("Results copied to clipboard!");
+      navigator.clipboard.writeText(`I just scored ${results.overallScore}/10 in DOBA! ${performance.emoji}`);
+      toast.success("Battle results copied to clipboard!");
     }
   };
 
@@ -64,7 +64,7 @@ const Results = ({ results, onPlayAgain }: ResultsProps) => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Star className="w-5 h-5 text-primary" />
-            Category Breakdown
+            Battle Performance Breakdown
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -107,7 +107,7 @@ const Results = ({ results, onPlayAgain }: ResultsProps) => {
       {/* AI Feedback */}
       <Card className="bg-card/50 backdrop-blur border-border/50">
         <CardHeader>
-          <CardTitle>AI Judge Feedback</CardTitle>
+          <CardTitle>Battle Judge Feedback</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground leading-relaxed">
@@ -135,7 +135,7 @@ const Results = ({ results, onPlayAgain }: ResultsProps) => {
           className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 font-semibold"
         >
           <RotateCcw className="w-5 h-5 mr-2" />
-          Freestyle Again
+          New Battle
         </Button>
         
         <Button 
@@ -145,7 +145,7 @@ const Results = ({ results, onPlayAgain }: ResultsProps) => {
           className="px-8 py-4 font-semibold"
         >
           <Share className="w-5 h-5 mr-2" />
-          Share Results
+          Share Battle Results
         </Button>
       </div>
     </div>

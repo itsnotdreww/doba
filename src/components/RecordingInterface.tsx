@@ -93,13 +93,13 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
         variant="ghost" 
         className="mb-6 text-muted-foreground hover:text-foreground"
       >
-        ← Back to Game
+        ← Back to Battle Arena
       </Button>
 
       <Card className="bg-card/50 backdrop-blur border-border/50">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl gradient-text mb-2">
-            {isRecording ? "Recording..." : audioBlob ? "Recording Complete" : "Ready to Record"}
+            {isRecording ? "Battle In Progress..." : audioBlob ? "Freestyle Complete" : "Ready to Battle"}
           </CardTitle>
           <div className="text-2xl font-mono text-primary">
             {formatTime(recordingTime)}
@@ -114,7 +114,7 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg font-semibold neon-glow"
               >
                 <Mic className="w-6 h-6 mr-2" />
-                Start Recording
+                Start Battle
               </Button>
             )}
 
@@ -126,7 +126,7 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
                 className="px-8 py-6 text-lg font-semibold"
               >
                 <Square className="w-6 h-6 mr-2" />
-                Stop Recording
+                End Battle
               </Button>
             )}
 
@@ -162,10 +162,10 @@ const RecordingInterface = ({ onRecordingComplete, onBack }: RecordingInterfaceP
           </div>
 
           <div className="text-center text-sm text-muted-foreground space-y-2">
-            <p>💡 <strong>Pro Tips:</strong></p>
+            <p>🔥 <strong>Battle Tips:</strong></p>
             <p>• Keep it between 30-60 seconds</p>
             <p>• Focus on flow, wordplay, and creativity</p>
-            <p>• Have fun and be yourself!</p>
+            <p>• Bring the heat and show no mercy!</p>
           </div>
         </CardContent>
       </Card>

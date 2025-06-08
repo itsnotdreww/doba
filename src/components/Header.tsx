@@ -10,12 +10,12 @@ const Header = () => {
             <Music className="w-6 h-6 text-primary" />
           </div>
           <h1 className="text-2xl font-bold gradient-text">
-            FreestyleAI
+            DOBA
           </h1>
         </div>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Mic className="w-4 h-4" />
-          <span>Ready to spit fire?</span>
+          <span>Battle for rap supremacy</span>
         </div>
       </div>
     </header>
